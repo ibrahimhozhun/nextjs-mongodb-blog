@@ -2,6 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+// Routes
+import authRoutes from "./routers/auth";
+import postRoutes from "./routers/post";
+
+// Environment configuration
 dotenv.config({ path: ".env.local" });
 
 const DB_URI = process.env.DB_URI || "";
@@ -13,8 +18,11 @@ app.use(cors({
   // We are using an array here because we have 2 origins
   // One for showing content, and one for creating content
   origin: ["http://localhost:3000"],
-  methods: ["GET", "POST"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
 }));
+app.use('/auth', authRoutes);
+app.use('/posts', postRoutes);
 
 try {
   mongoose.connect(DB_URI, {
