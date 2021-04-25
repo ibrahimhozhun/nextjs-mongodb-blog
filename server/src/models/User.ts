@@ -1,13 +1,23 @@
 import { Document, Model, model, Schema } from "mongoose";
 import bcrypt from "bcrypt";
 
-interface User extends Document {
+interface IError {
+  code: string;
+  message: string;
+}
+
+export interface User extends Document {
   name: string;
   password: string;
+  login: (name: string, password: string) => User;
+}
+
+interface UserModel extends Model<User> {
+  login(name: string, password: string): Promise<User>;
 }
 
 // Schema
-const UserSchema = new Schema<User, Model<User>>({
+const UserSchema = new Schema<User, UserModel>({
   name: {
     type: String,
     required: [true, 'Username is required'],
@@ -29,5 +39,34 @@ UserSchema.pre<User>('save', async function (next) {
   next();
 });
 
+// Login function
+UserSchema.statics.login = async function (name: string, password: string) {
+  // Find user in database
+  const user = await this.findOne({ name });
+
+  let error: IError;
+
+  // If there is a user with that name
+  if (user) {
+    // Compare passwords
+    const auth = await bcrypt.compare(password, user.password);
+
+    // If the password is correct return the user
+    if (auth) {
+      return user;
+    }
+
+    // Otherwise throw this error object
+    error = { code: "ERR_LOGIN_FAILED", message: "Incorrect password" };
+
+    throw error;
+  }
+
+  // If there is no user with that name throw this error object
+  error = { code: "ERR_LOGIN_FAILED", message: "User not found" };
+
+  throw error;
+}
+
 // Default export
-export default model<User, Model<User>>("User", UserSchema);
+export default model<User, UserModel>("User", UserSchema);

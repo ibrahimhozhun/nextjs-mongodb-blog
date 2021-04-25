@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 // Routes
@@ -21,6 +22,8 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
+app.use(express.json());
+app.use(cookieParser());
 app.use('/auth', authRoutes);
 app.use('/posts', postRoutes);
 
