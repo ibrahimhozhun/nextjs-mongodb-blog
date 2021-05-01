@@ -32,6 +32,7 @@ try {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
+    useFindAndModify: false,
   }, err => {
     if (err) throw Error(err.message);
 
