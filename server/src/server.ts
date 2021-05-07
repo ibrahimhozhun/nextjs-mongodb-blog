@@ -15,30 +15,35 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+// We need this middleware to send and receive data in json format
+app.use(express.json({ limit: '50mb' }));
+// We send and receive images so we need to limit it
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors({
   // We are using an array here because we have 2 origins
   // One for showing content, and one for creating content
-  origin: ["http://localhost:3000"],
+  origin: ["http://localhost:3000", "http://localhost:3001"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
-app.use(express.json());
+// We use this middleware to send cookies to client
 app.use(cookieParser());
 app.use('/auth', authRoutes);
 app.use('/posts', postRoutes);
 
-try {
-  mongoose.connect(DB_URI, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  }, err => {
-    if (err) throw Error(err.message);
-
+// Connect to MongoDB
+mongoose.connect(DB_URI, {
+  // Connection configuration
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+}, err => {
+  // Catch errors
+  if (err) {
+    console.log(err);
+  } else {
     console.log("Connected with MongoDB");
     app.listen(PORT, () => console.log("Server is up and running on http://localhost:5000"));
-  });
-} catch (error) {
-  console.log(error);
-}
+  }
+});

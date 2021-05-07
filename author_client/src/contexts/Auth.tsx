@@ -16,7 +16,6 @@ interface IAuthContext {
   loading: boolean;
   errors: IErrors;
   login: (name: string, password: string) => void;
-  register: (name: string, password: string) => void;
   logout: () => void;
   // To get user when component first renders
   // We need to call this function whenever our user in database changes
@@ -47,11 +46,11 @@ export const AuthContextProvider: React.FC = ({ children }) => {
 
   const handleErrors = (err: any) => {
     const errors = err.response.data.errors;
-    
+
     // Assign errors to state
     Object.keys(errors).forEach((key: string) => {
-        setErrors(prevErrors => ({ ...prevErrors, [key]: errors[key] }))
-      });
+      setErrors(prevErrors => ({ ...prevErrors, [key]: errors[key] }))
+    });
   }
 
   const getUser = async () => {
@@ -85,27 +84,12 @@ export const AuthContextProvider: React.FC = ({ children }) => {
     setLoading(false);
   };
 
-  const register = async (name: string, password: string) => {
-    setLoading(true);
-    setErrors(null);
-    try {
-      const res = await axios.post<{ user: string }>("/auth/register", { name, password });
-      setUsername(res.data.user);
-      setErrors(null);
-    } catch (error) {
-      console.log(error.response);
-      handleErrors(error);
-    }
-    setLoading(false);
-  };
-
   return (
     <AuthContext.Provider
       value={{
         username,
         login,
         logout,
-        register,
         getUser,
         loading,
         errors

@@ -1,93 +1,42 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { Grid, Typography } from "@material-ui/core";
+import TextEditor from "./components/TextEditor";
+import Login from "./components/Login";
 import { useAuth } from "./contexts/Auth";
+import useStyles from "./styles";
 
 const App: React.FC = () => {
-  const {
-    username,
-    login,
-    logout,
-    loading,
-    register,
-    errors
-  } = useAuth();
-  // this states are just testing auth context i will delete them
-  const [uname, setUname] = useState("");
-  const [password, setPassword] = useState("");
+  const { loading, username } = useAuth();
+  const classes = useStyles();
 
   return (
-    <div>
+    <Grid
+      className={classes.container}
+      container
+      direction="column"
+      alignItems="center"
+      justify="center"
+    >
       {loading ? (
-        <div>loading...</div>
+        <Typography variant="h1">Loading...</Typography>
       ) : (
-          // this component is just for testing auth context, i will delete them later
-          <div>
-            errors: {JSON.stringify(errors, null, 4)}
+        <>
           {username ? (
-            <div>
-              <div>{username}</div>
-              <button onClick={() => logout()}>logout</button>
-            </div>
+            <Grid
+              item xs={12}
+              container
+              direction="column"
+            >
+              {/* 
+                  // todo: create a navbar and setup router
+                */}
+              <TextEditor />
+            </Grid>
           ) : (
-            <>
-              <div>
-                <form
-                  onSubmit={(e: FormEvent) => {
-                    e.preventDefault();
-                    login(uname, password);
-                  }}
-                >
-                  <label htmlFor="username">Username</label>
-                  <input
-                    type="text"
-                    value={uname}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setUname(e.target.value)
-                    }
-                    required
-                  />
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    required
-                    value={password}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setPassword(e.target.value)
-                    }
-                  />
-                  <button type="submit">login</button>
-                </form>
-              </div>
-              <div>
-                    <form onSubmit={(e: FormEvent) => {
-                      e.preventDefault();
-                      register(uname, password);
-                }}>
-                  <label htmlFor="username">Username</label>
-                  <input
-                    type="text"
-                    name="username"
-                    required
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setUname(e.target.value)
-                    }
-                  />
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="text"
-                    name="password"
-                    required
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setPassword(e.target.value)
-                    }
-                      />
-                      <button type="submit">register</button>
-                </form>
-              </div>
-            </>
+            <Login />
           )}
-        </div>
+        </>
       )}
-    </div>
+    </Grid>
   );
 };
 
