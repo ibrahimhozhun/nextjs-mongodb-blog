@@ -12,7 +12,8 @@ dotenv.config({ path: ".env.local" });
 
 const DB_URI = process.env.DB_URI || "";
 const PORT = process.env.PORT || 5000;
-
+const client_origin = process.env.CLIENT_ORIGIN || "";
+const author_client_origin = process.env.AUTHOR_CLIENT_ORIGIN || "";
 const app = express();
 
 // We need this middleware to send and receive data in json format
@@ -22,7 +23,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors({
   // We are using an array here because we have 2 origins
   // One for showing content, and one for creating content
-  origin: ["http://localhost:3000", "http://localhost:3001"],
+  origin: [client_origin, author_client_origin],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
