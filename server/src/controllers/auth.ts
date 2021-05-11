@@ -14,20 +14,20 @@ const handleErrors = (err: any) => {
 
   // Duplicate error
   if (err.code === 11000) {
-    errors['duplicate'] = 'This username already have an account';
+    errors['duplicate_error'] = 'This username already have an account';
     return errors;
   }
 
   // Validation errors
   if (err.message.includes('User validation failed')) {
     Object.values(err.errors).forEach(({ properties }: any) => {
-      errors[properties.path] = properties.message;
+      errors[properties.path + "_error"] = properties.message;
     });
   }
 
   // Login error
   if (err.code === "ERR_LOGIN_FAILED") {
-    errors['login'] = err.message;
+    errors['login_error'] = err.message;
   }
 
   return errors;
@@ -62,7 +62,7 @@ export const login = async (req: Request, res: Response) => {
     // Create token
     const token = createToken(user._id);
     // Set cookie
-    res.cookie('jwt', token, { maxAge: maxAge * 1000, httpOnly: true, sameSite: "strict", secure: true });
+    res.cookie('jwt', token, { maxAge: maxAge * 1000, httpOnly: true, secure: true, sameSite: "none" });
 
     res.status(200).json({ message: 'Successfully logged in', user: user.name });
   } catch (err) {
