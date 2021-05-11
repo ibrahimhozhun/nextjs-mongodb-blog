@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@material-ui/core";
+import { CssBaseline, Grid, Typography } from "@material-ui/core";
 import axios from "axios";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./components/Home";
@@ -28,6 +28,7 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
+      <CssBaseline />
       <Navbar />
       <Grid
         className={classes.container}
