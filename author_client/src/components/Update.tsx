@@ -16,7 +16,6 @@ const Update: React.FC = () => {
     setLoading(true);
     try {
       const res = await axios.get<{ post: IPost }>(`/posts/get/${id}`);
-      // console.log(res);
       setPost(res.data.post);
     } catch (error) {
       console.log(error);
@@ -28,7 +27,7 @@ const Update: React.FC = () => {
   useEffect(() => {
     getPost();
     return setFetchPostAgain(false);
-    // }, []);
+    // eslint-disable-next-line
   }, [fetchPostAgain]);
 
   const updatePost = async (content: string) => {
@@ -41,7 +40,6 @@ const Update: React.FC = () => {
       console.log(error.response);
     }
     setFetchPostAgain(true);
-    // setLoading(false);
   }
 
   return (
