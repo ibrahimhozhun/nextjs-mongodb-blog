@@ -1,6 +1,6 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
 
-export default makeStyles({
+export default makeStyles(() => createStyles({
   container: {
     minHeight: "100vh"
   },
@@ -36,4 +36,4 @@ export default makeStyles({
     justifyContent: "flex-end",
     margin: "12px"
   }
-});
+}));

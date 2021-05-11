@@ -2,10 +2,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 interface IErrors {
-  login?: string;
-  duplicate?: string;
-  name?: string;
-  password?: string;
+  login_error?: string;
+  duplicate_error?: string;
+  name_error?: string;
+  password_error?: string;
 }
 
 interface IAuthContext {
