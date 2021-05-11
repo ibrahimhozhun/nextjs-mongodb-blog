@@ -28,7 +28,6 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <CssBaseline />
       <Navbar />
       <Grid
         className={classes.container}
