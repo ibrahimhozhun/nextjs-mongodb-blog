@@ -4,7 +4,11 @@ import Post from "../models/Post";
 export const getAllPosts = async (_: Request, res: Response) => {
   try {
     // Get all posts from the database
-    const posts = await Post.find();
+    let posts = await Post.find();
+
+    // Be sure posts array is sorted by update date
+    posts = posts.sort((a, b) => b.updatedAt - a.updatedAt);
+
     // Send posts to client
     res.json({ posts });
   } catch (error) {
@@ -13,12 +17,12 @@ export const getAllPosts = async (_: Request, res: Response) => {
   }
 }
 
-export const getById = async (req: Request, res: Response) => {
-  const { id } = req.params;
+export const getBySlug = async (req: Request, res: Response) => {
+  const { slug } = req.params;
 
   try {
     // Get post by id
-    const post = await Post.findById(id);
+    const post = await Post.findOne({ slug });
     if (post) {
       // Send post to client
       res.json({ post });
