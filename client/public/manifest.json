@@ -1,0 +1,25 @@
+{
+  "short_name": "Anti-Bullying Project",
+  "name": "Anti-Bullying Project Blog",
+  "icons": [
+    {
+      "src": "images/favicon.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo320.png",
+      "type": "image/png",
+      "sizes": "320x320"
+    },
+    {
+      "src": "images/logo.jpeg",
+      "type": "image/jpeg",
+      "sizes": "1600x1600"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
