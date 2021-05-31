@@ -6,7 +6,7 @@ import TextEditor from "./TextEditor"
 import useStyles from "../styles";
 
 const Update: React.FC = () => {
-  const { id } = useParams<{ slug: string, id: string }>();
+  const { id, slug } = useParams<{ slug: string, id: string }>();
   const [post, setPost] = useState<IPost>(null);
   const [fetchPostAgain, setFetchPostAgain] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -15,7 +15,7 @@ const Update: React.FC = () => {
   const getPost = async () => {
     setLoading(true);
     try {
-      const res = await axios.get<{ post: IPost }>(`/posts/get/${id}`);
+      const res = await axios.get<{ post: IPost }>(`/posts/get/${slug}`);
       setPost(res.data.post);
     } catch (error) {
       console.log(error);
