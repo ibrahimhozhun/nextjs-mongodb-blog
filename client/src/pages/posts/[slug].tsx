@@ -55,22 +55,21 @@ export const getStaticProps: GetStaticProps<{ post: Post | null }> = async ({ pa
 const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
 
-  // return router.isFallback ? (
-  //   <PostSkeleton />
-  // ) : (
-  //   <div>
-  //     {post ? (
-  //       <Post post={post} />
-  //     ) : (
-  //       <div className="flex flex-col lg:flex-row items-center text-center">
-  //         <h1 className="text-2xl m-4">Post can not find.</h1>
-  //         <Link href="/"><a className="text-lg p-1 lg:p-2 bg-yellow-400 rounded">Go to Home Page</a></Link>
-  //       </div>
-  //     )
-  //     }
-  //   </div>
-  // );
-  return <PostSkeleton />;
+  return router.isFallback ? (
+    <PostSkeleton />
+  ) : (
+    <div>
+      {post ? (
+        <Post post={post} />
+      ) : (
+        <div className="flex flex-col lg:flex-row items-center text-center">
+          <h1 className="text-2xl m-4">Post can not find.</h1>
+          <Link href="/"><a className="text-lg p-1 lg:p-2 bg-yellow-400 rounded">Go to Home Page</a></Link>
+        </div>
+      )
+      }
+    </div>
+  );
 }
 
 export default PostPage;
