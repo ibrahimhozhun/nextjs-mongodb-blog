@@ -7,68 +7,96 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-::selection{
+::selection {
   background: rgb(3, 223, 120);
 }
 
 /* Home Page Styles */
-.root{
+.root {
   min-height: calc(100vh - 4rem);
   @apply py-12 px-2 lg:px-24 lg:pb-0 bg-gradient-to-bl from-green-600 to-blue-600;
 }
 
-.glass-card-container{
-  @apply bg-white backdrop-filter backdrop-blur-sm bg-opacity-[.15] border-[#81c0ff] border-r border-b rounded-lg shadow-2xl p-4 lg:pl-12 mb-4 lg:mb-8;
+.glass-card-container {
+  @apply bg-white backdrop-filter backdrop-blur-sm bg-opacity-[.15] border-[#81c0ff] border-r border-b rounded-lg shadow-2xl p-4 lg:pl-12;
 }
 
-.card-title{
+.card-title {
   @apply text-[#121312] text-6xl lg:text-7xl font-semibold py-4;
 }
 
-.card-subtitle{
+.card-subtitle {
   @apply text-3xl font-light py-4 lg:py-8 col-span-5 lg:col-span-4;
 }
 
-.highlight{
+.highlight {
   @apply font-medium text-gray-900;
 }
 
-.card-grid{
+.card-grid {
   @apply md:grid grid-cols-12;
 }
 
-.button-group{
+.button-group {
   @apply flex flex-col justify-between lg:justify-evenly col-span-4 xl:col-span-3;
 }
 
-.cta-btn-yellow{
+.cta-btn-yellow {
   @apply flex justify-around items-center p-2 lg:p-1 mb-4 lg:mb-0 shadow bg-yellow-500 border-2 md:border-[3px] border-yellow-700 text-sm xs:text-base sm:text-lg rounded-md w-full transition duration-500 transform hover:scale-105;
 }
 
-.second-title{
+.image-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 place-items-center;
+}
+
+.image-grid-title {
+  @apply font-medium text-4xl lg:text-5xl mb-2 md:col-span-2 xl:col-span-3;
+}
+
+.date {
+  @apply text-sm text-gray-700 dark:text-gray-300;
+}
+
+.date-sm {
+  @apply text-xs text-gray-600 font-medium;
+}
+
+.post-body {
+  @apply prose max-w-none p-4 pt-0 mt-4 bg-gray-50 rounded-md shadow;
+}
+
+.posts-list {
+  @apply grid gap-y-4;
+}
+
+.posts-list-item {
+  @apply cursor-pointer rounded-md text-gray-900 dark:text-gray-100 bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-900 transition duration-500 shadow-sm w-full p-4;
+}
+
+.second-title {
   @apply text-3xl font-medium text-[#101110];
 }
 
 /* Navbar Styles */
-.nav-root{
-  @apply sticky top-0 z-10 max-h-16 shadow-md bg-gradient-to-br text-gray-600 from-gray-300 to-gray-100 dark:text-gray-400 dark:from-gray-700 dark:to-gray-900
+.nav-root {
+  @apply sticky top-0 z-10 max-h-16 shadow-md bg-gradient-to-br text-gray-600 from-gray-300 to-gray-100 dark:text-gray-400 dark:from-gray-700 dark:to-gray-900;
 }
 
-.nav-container{
+.nav-container {
   @apply container flex mx-auto p-5 flex-row items-center;
 }
 
-.nav-links{
+.nav-links {
   @apply pl-4 lg:border-l border-gray-600 lg:flex items-center justify-center leading-7;
 }
 
-.nav-menu-icon{
+.nav-menu-icon {
   @apply block lg:hidden focus:outline-none focus:text-black dark:focus:text-white;
 }
 
-.nav-link{
+.nav-link {
   @apply mr-5 text-base hover:text-black dark:hover:text-white transition duration-300;
 }
