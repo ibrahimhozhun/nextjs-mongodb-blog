@@ -33,13 +33,7 @@ app.use('/auth', authRoutes);
 app.use('/posts', postRoutes);
 
 // Connect to MongoDB
-mongoose.connect(DB_URI, {
-  // Connection configuration
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-}, err => {
+mongoose.connect(DB_URI, err => {
   // Catch errors
   if (err) {
     console.log(err);
