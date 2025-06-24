@@ -1,29 +1,84 @@
-# Blog of Anti-Bullying Project
-I am a part of this project and we need a blog. As a developer I should do it and I wanna make it open-source for developer community.
+# 📝 Next.js MongoDB Blog
 
-# Tech Stack will be used
-## Client Side
- - [Next.js](https://nextjs.org/)
+A full-stack blog platform built with **Next.js**, **MongoDB**, and **Tailwind CSS**.
 
-## Server Side
-   - [Node.js](https://nodejs.org/)
+## 🌍 About the Project
 
-  - [TypeScript](https://www.typescriptlang.org/)
+This platform was developed as part of the Erasmus+ **Anti-Bullying Project**, aiming to provide a safe and structured environment where users can share stories, ideas, or information related to bullying awareness, prevention, and support.
 
-  - [Express](https://www.npmjs.com/package/express) for handling http requests
+## Live Demo
+Check out the live version [here](https://anti-bullying-blog.vercel.app/)
 
-  - [cors](https://www.npmjs.com/package/cors) for fixing CORS errors
+## ✨ Features
 
-  - [dotenv](https://www.npmjs.com/package/dotenv) for using environment variables
+- 🧑‍💻 **User Authentication** with JWT (JSON Web Tokens)
+- ✍️ **CRUD Operations** for blog posts (Create, Read, Update, Delete)
+- ⚡ **Responsive Design** using Tailwind CSS
+- 🌐 **API Routes** for seamless backend integration
+- 🔐 Protected routes and session-based access control
+- 🌱 MongoDB integration with Mongoose
 
- - [mongoose](https://www.npmjs.com/package/mongoose) to perform CRUD operations in MongoDB
+---
 
-## Database
-  - [MongoDB](https://www.mongodb.com/)
-## Dependencies Used in Development
+## 🛠️ Built With
 
-  - [Nodemon](https://www.npmjs.com/package/nodemon) for auto-restarting server
+- **[Next.js](https://nextjs.org/)** – React-based framework used for its seamless full-stack capabilities, including API routes and SSR/SSG.
+- **[MongoDB](https://www.mongodb.com/)** – NoSQL database chosen for its flexibility and scalability, ideal for dynamic content like blog posts.
+- **[Mongoose](https://mongoosejs.com/)** – ODM (Object Data Modeling) library to define schemas and interact with MongoDB more intuitively.
+- **[Tailwind CSS](https://tailwindcss.com/)** – Utility-first CSS framework that allows rapid and responsive UI development with minimal custom CSS.
+- **[JWT (JSON Web Token)](https://jwt.io/)** – Secure, stateless authentication mechanism for protecting routes and APIs.
 
-  - [ts-node](https://www.npmjs.com/package/ts-node) for 'nodemon' to compile the typescript code
 
-  - [create-next-app](https://nextjs.org/docs/api-reference/create-next-app) for creating Next app
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/ibrahimhozhun/nextjs-mongodb-blog.git
+cd nextjs-mongodb-blog
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env.local` file and add the following:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+NEXTAUTH_URL=http://localhost:3000
+```
+
+### 4. Run the Development Server
+
+```bash
+npm run dev
+```
+
+The app should be running at [http://localhost:3000](http://localhost:3000).
+
+
+---
+
+## 🛡️ Authentication & Authorization
+
+- Uses JWT stored in HTTP-only cookies for authentication
+- Protected API routes and pages with role-based access checks
+
+---
+
+## 🧑‍🎓 Author
+
+**İbrahim Halil Özhun**  
+[GitHub](https://github.com/ibrahimhozhun)
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
