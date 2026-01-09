@@ -1,26 +1,26 @@
-# 📝 Next.js MongoDB Blog
+# Next.js MongoDB Blog
 
 A full-stack blog platform built with **Next.js**, **MongoDB**, and **Tailwind CSS**.
 
-## 🌍 About the Project
+## About the Project
 
 This platform was developed as part of the Erasmus+ **Anti-Bullying Project**, aiming to provide a safe and structured environment where users can share stories, ideas, or information related to bullying awareness, prevention, and support.
 
 ## Live Demo
 Check out the live version [here](https://anti-bullying-blog.vercel.app/)
 
-## ✨ Features
+## Features
 
-- 🧑‍💻 **User Authentication** with JWT (JSON Web Tokens)
-- ✍️ **CRUD Operations** for blog posts (Create, Read, Update, Delete)
-- ⚡ **Responsive Design** using Tailwind CSS
-- 🌐 **API Routes** for seamless backend integration
-- 🔐 Protected routes and session-based access control
-- 🌱 MongoDB integration with Mongoose
+- **User Authentication** with JWT (JSON Web Tokens)
+- **CRUD Operations** for blog posts (Create, Read, Update, Delete)
+- **Responsive Design** using Tailwind CSS
+- **API Routes** for seamless backend integration
+- Protected routes and session-based access control
+- MongoDB integration with Mongoose
 
 ---
 
-## 🛠️ Built With
+## Built With
 
 - **[Next.js](https://nextjs.org/)** – React-based framework used for its seamless full-stack capabilities, including API routes and SSR/SSG.
 - **[MongoDB](https://www.mongodb.com/)** – NoSQL database chosen for its flexibility and scalability, ideal for dynamic content like blog posts.
@@ -29,7 +29,7 @@ Check out the live version [here](https://anti-bullying-blog.vercel.app/)
 - **[JWT (JSON Web Token)](https://jwt.io/)** – Secure, stateless authentication mechanism for protecting routes and APIs.
 
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -65,20 +65,16 @@ The app should be running at [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## 🛡️ Authentication & Authorization
+## Authentication & Authorization
 
 - Uses JWT stored in HTTP-only cookies for authentication
 - Protected API routes and pages with role-based access checks
 
 ---
 
-## 🧑‍🎓 Author
+## Author
 
 **İbrahim Halil Özhun**  
 [GitHub](https://github.com/ibrahimhozhun)
-
----
-
-## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
