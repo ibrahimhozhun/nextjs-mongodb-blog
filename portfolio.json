@@ -1,4 +1,11 @@
 {
   "title": "Anti-Bullying Blog Platform",
-  "short_description": "A secure blogging application featuring complete CRUD operations and protected routes. Engineered with session-based access control and JWT authentication over a NoSQL database architecture." 
+  "short_description": "A secure blogging application featuring complete CRUD operations and protected routes. Engineered with session-based access control and JWT authentication over a NoSQL database architecture.",
+  "tech_stack": [
+    "Next.js",
+    "MongoDB",
+    "Mongoose",
+    "Tailwind CSS",
+    "TypeScript"
+  ],
 }
